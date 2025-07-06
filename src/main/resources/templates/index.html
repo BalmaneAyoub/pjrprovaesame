@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+</head>
+<body>
+
+        <div class="container">
+            <h1>Prodotti</h1>
+            <table>
+            
+            </table>
+        </div>
+        <script>
+            const URL = "/api/all";
+            fetch(URL)
+                .then(response => response.json())
+                .then(canzoni => {
+                    for (const p of canzoni) {
+                        const TR = document.createElement("tr");
+                        const TD1 = document.createElement("td")
+                        const TD2 = document.createElement("td")
+                        const TD3 = document.createElement("td")
+                        const TD4 = document.createElement("td")
+                       
+                            TD1.textContent = p.id;
+                            TD2.textContent = p.titolo;
+                            TD3.textContent = p.cantante;
+                            TD4.textContent = p.genere;
+                            
+
+
+
+                            TR.append(TD1,TD2,TD3, TD4);
+                            document.querySelector("table").append(TR);
+                    }
+                })
+        </script>
+</body>
+</html>
